@@ -2,15 +2,24 @@
 
 def admin_login(username, password):
     # your code here
-    if username.lower() == 'admin' and int(password, base=10) == 12345:
-        # print('Access granted', end='\n')
-        return 'Access granted'
-    # elif type(username) != str or type(int(password)) != int:
-    #     return 'Access denied'
-    else:
-        return 'Access denied'
+    try:
+        if password == '12345':
+            if username.lower() != 'admin' or int(password) != 12345:
+                return 'Access denied'
+            else:
+                if username.lower() == 'admin' and int(password) == 12345:
+                    print(f'username is {username}')
+                    return 'Access granted'
+                else:
+                    return 'Access denied'
+        else:
+            return 'Access denied'
+    except ValueError:
+        print('Invalid operator!', end='\n')
     pass
 
+admin_login('sudo', '12345')
+admin_login('admin', 'sudo')
 def hows_the_weather(temperature):
     # your code here
     if temperature == 33:
@@ -47,8 +56,9 @@ def calculator(operation, num1, num2):
         return num1 * num2
     elif str(operation) == '/':
         return num1 / num2
-    elif str()
+    # elif str(operation) == '==':
+    #     return 'Invalid operation!\n'
     else:
-        print('Invalid operation!\n')
+        print('Invalid operation!', end='\n')
         return None
     pass
